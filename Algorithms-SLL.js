@@ -190,6 +190,21 @@ class LinkedList {
         console.log(str);
     }
 
+    //searches if element is in list
+    //if true returns index, if not return false
+    search(element){
+        var current=this.head;
+        var counter=0;
+        while(current){
+            if(current.element==element){
+                return counter;
+            }
+            current=current.next;
+            counter++
+        }
+        return false;
+    }
+
 }
 
 // creating an object for the 
