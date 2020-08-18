@@ -184,4 +184,13 @@ console.log(isAnagram('Yes', 'eYs')); // should log true
 console.log(isAnagram('silent', 'listen')); // should log true
 console.log(isAnagram('ono', 'noa')); // should log false
 
+function isPalindrome(str){
+    for(var i=0;i<str.length;i++){
+        if(str[i]!==str[str.length-1-i]){
+            return false;
+        }
+    }
+    return true;
+}
+console.log(isPalindrome("hannah"));
 
