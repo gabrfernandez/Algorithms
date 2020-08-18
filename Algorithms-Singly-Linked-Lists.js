@@ -1,5 +1,10 @@
 //Algorithms-Singly-Linked_Lists
-
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    }
+}
 class SLL {
     constructor() {
         this.head = null;
@@ -207,12 +212,7 @@ class SLL {
     }
 }
 
-class Node {
-    constructor(data) {
-        this.data = data;
-        this.next = null;
-    }
-}
+
 
 // var mySLL = new SLL();
 
