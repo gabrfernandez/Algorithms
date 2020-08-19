@@ -20,6 +20,10 @@ class Stack {
    isEmpty() {
      return this.top === 0;
    }
+   clear(){
+      this.data=[];
+   }
+
    pop() {
     if( this.isEmpty() === false ) {
        this.top = this.top -1;
