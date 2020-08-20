@@ -100,7 +100,7 @@ class LinkedList {
                 this.head = curr.next;
             } else {
                 // iterate over the list to the 
-                // position to removce an element 
+                // position to remove an element 
                 while (it < index) {
                     it++;
                     prev = curr;
@@ -205,6 +205,17 @@ class LinkedList {
         return false;
     }
 
+    getElementAt(index){
+        if(index>0 && index<this.size){
+            let current=this.head;
+            for(var i=0;i<index &&current !=null;i++){
+                current=current.next;
+            }
+            return current;
+        }
+        return undefined;
+    }
+
 }
 
 // creating an object for the 
@@ -256,3 +267,6 @@ console.log(ll.removeFrom(3));
 
 // prints 10 20 60 40 
 ll.printList(); 
+
+//returns 40
+ll.getElementAt(3);

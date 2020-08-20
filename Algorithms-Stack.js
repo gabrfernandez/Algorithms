@@ -22,12 +22,15 @@ class Stack {
    }
    clear(){
       this.data=[];
+      this.top=0;
    }
 
    pop() {
     if( this.isEmpty() === false ) {
        this.top = this.top -1;
-       return this.data.pop(); // removes the last element
+       const result=this.data[this.top];
+       delete this.data[this.top]; // removes the last element
+       return result;
      }
    }
    print() {
