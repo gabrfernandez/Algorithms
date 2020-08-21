@@ -91,7 +91,7 @@ class Set{
         return isSubset;
     }
 
-    
+
 }
 
 var set=new Set()
@@ -132,3 +132,12 @@ setC.add(3);
 setC.add(4);
 console.log(setA.isSubsetOf(setB)); 
 console.log(setA.isSubsetOf(setC));
+
+//union 
+//console.log(new Set([...setA, ...setB])); 
+
+//intersection
+//console.log(new Set([...setA].filter(x=>setB.has(x))));
+
+//difference
+//console.log(new Set([...setA].filter(x=>!setB.has(x))));
