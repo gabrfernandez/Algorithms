@@ -112,3 +112,30 @@ function quickSort(arr, startIdx=0, endIdx=arr.length-1){
 arr=[1,4,2,6,5,9,8];
 quickSort(arr);
 //console.log("Pivot value "+arrayPartition(arr));
+
+//have an object, Person, with name and age, and we want to sort the array based on the age of the person
+const friends = [
+    { name: 'John', age: 30 },
+    { name: 'Ana', age: 20 },
+    { name: 'Chris', age: 25 }, 
+  ];
+  function comparePerson(a, b) {
+    if (a.age < b.age) {
+      return -1;
+    }
+    if (a.age > b.age) {
+      return 1;
+    }
+    return 0;
+  }
+  console.log(friends.sort(comparePerson));
+//   [
+//     { name: 'Ana', age: 20 },
+//     { name: 'Chris', age: 25 },
+//     { name: 'John', age: 30 }
+//   ]
+
+//alphabetically order an array of names
+names = ['Ana', 'ana', 'john', 'John', 'Gabe', 'gabriel'];
+console.log(names.sort((a,b)=>a.localeCompare(b)))
+//[ 'ana', 'Ana', 'Gabe', 'gabriel', 'john', 'John' ]

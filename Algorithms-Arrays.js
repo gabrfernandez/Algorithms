@@ -307,6 +307,24 @@ console.log(array1.copyWithin(0, 3, 4));// expected output: Array ["d", "b", "c"
 // copy to index 1 all elements from index 3 to the end
 console.log(array1.copyWithin(1, 3));// expected output: Array ["d", "d", "e", "d", "e"]
 
+//FIND-returns the value of the first element in the provided array that satisfies the provided testing function.
+const array1 = [5, 12, 8, 130, 44];
+const found = array1.find(element => element > 10);
+console.log(found);// expected output: 12
+
+//FINDINDEX- method returns the index of the first element in the array that satisfies the provided testing function. 
+//Otherwise, it returns -1, indicating that no element passed the test.
+const array1 = [5, 12, 8, 130, 44];
+const isLargeNumber = (element) => element > 13;
+console.log(array1.findIndex(isLargeNumber));// expected output: 3
+
+//INCLUDES-determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+const array1 = [1, 2, 3];
+console.log(array1.includes(2));// expected output: true
+const pets = ['cat', 'dog', 'bat'];
+console.log(pets.includes('cat'));// expected output: true
+console.log(pets.includes('at'));// expected output: false
+
 
 
 
