@@ -11,7 +11,6 @@ function insertBegin(arr,val){
 insertBegin([0,1,2,3],-1) //[-1,0,1,2,3]
 
 //delete value at beginning of an array, not using shift()
-
 function removeBegin(arr){
     for(let i=0;i<arr.length;i++){
         arr[i]=arr[i+1] //shift all elements to the left
