@@ -17,7 +17,7 @@ class DoublyLinkedList{
 
     //add to the end of the list
     append(element){
-        let node= new Node(item);
+        let node= new Node(element);
         if(!this.head){
             this.head=node;
             this.tail=node;

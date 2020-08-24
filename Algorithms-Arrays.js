@@ -87,7 +87,7 @@ console.log(balancePoint([1,2,3,4])); //false
 console.log(balancePoint([3,4,2,5])); //true
 
 
-//takes in tow equal-length arrays, returns an object, with the elements from the first as keys and te elements from the second as values
+//takes in two equal-length arrays, returns an object, with the elements from the first as keys and te elements from the second as values
 function zipArraysIntoMap(arr1, arr2){
     var newobj={};
     for(var i=0; i<arr1.length;i++){
