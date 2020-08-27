@@ -82,3 +82,4 @@ function rSumToOneDigit(num){
 }
 console.log(rSumToOneDigit(19)); // should log 1: 1 + 9 = 10 -> 1 + 0 = 1
 console.log(rSumToOneDigit(999)); // should log 9: 9 + 9 + 9 = 27 -> 2 + 7 = 9
+
