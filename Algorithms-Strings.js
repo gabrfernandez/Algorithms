@@ -10,6 +10,11 @@ function reverse(str){
 }
 console.log(reverse("fast"))//returns tsaf
 
+function reverseArrStr(str){
+    return str.split("").reverse().join("");
+}
+console.log(reverseArrStr("fast"))//return tsaf
+
 //Create a function that creates acronym
 function getAcronym(str){
     var words, acronym, nextWord;
