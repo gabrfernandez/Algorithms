@@ -1,5 +1,15 @@
 //Algorithms-Strings
 
+//function that reverses a string
+function reverse(str){
+    let reversed="";
+    for(let i=str.length-1;i>=0;i--){
+        reversed+=str[i];
+    }
+    return reversed;
+}
+console.log(reverse("fast"))//returns tsaf
+
 //Create a function that creates acronym
 function getAcronym(str){
     var words, acronym, nextWord;
