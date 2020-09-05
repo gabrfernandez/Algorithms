@@ -15,18 +15,33 @@ function bubbleSort(arr){
 arr=[9,7,5,3,1];
 bubbleSort(arr);
 
+//improved bubble sort
+function improvedBubbleSort(arr){
+    for(let i=0;i<arr.length;i++){
+        for(let j=0;j<arr.length-1-i;j++){//avoid unnecessary comparisons by inner loop
+            if(arr[j]>arr[j+1]){
+                let temp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
+            }
+        }
+    }
+    return arr;
+}
+console.log(improvedBubbleSort([3,5,7,1,8,6,4]))
+
 //selection sort
 //sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part and putting it at the beginning. 
 function selectionSort(arr){
-    for(var i=0; i<arr.length; i++){
-        var min=i
-        for (j=i+1; j<arr.length; j++){
-            if(arr[min]>arr[j]){
-                min=j;
+    for(var i=0; i<arr.length-1; i++){//outer loop, iterate the arr and control the passes
+        var min=i // assume current value is minimum
+        for (j=i; j<arr.length; j++){//starting from current i value to end arr
+            if(arr[min]>arr[j]){//comparison of j position is less than current min value
+                min=j;//set new min value
             }
         }
-        if (min!==i){
-            var temp=arr[i];
+        if (min!==i){//if min value is different than original min value
+            var temp=arr[i];//swap
             arr[i]=arr[min];
             arr[min]=temp;
         }
@@ -39,14 +54,14 @@ selectionSort(arr);
 //insertion sort
 //sorting algorithm that builds the final sorted array one item at a time
 function insertionSort(arr){
-    for(var i=0; i<arr.length; i++){
-        var insert=arr[i];
-        var j=i-1;
-        while(j>=0 && insert<arr[j]){
-            arr[j+1]= arr[j];
-            j--;
+    for(var i=1; i<arr.length; i++){//iterate arr to find correct place for value of i
+        var j=i;//assign i to auxiliary variable
+        var insert=arr[i];//store value of i position in temp variable
+        while(j>=0 && insert<arr[j-1]){//j bigger than 0, previous value in array is bigger than value we comparing
+            arr[j]= arr[j-1];//shift previous value to current position
+            j--;//decrease value of j
         }
-        arr[j+1]=insert;
+        arr[j]=insert; // insert the value in correct position 
     }
     return arr;
 }
@@ -56,28 +71,30 @@ insertionSort(arr);
 //merge sort
 //It divides input array in two halves, calls itself for the two halves and then merges the two sorted halves.
 function mergeSort(arr){
-    if(arr.length<=1){
+    if(arr.length<=1){//if arr is less than arr, return it
         return arr;
     }
-    const middle=Math.floor(arr.length/2);
-    const left=arr.slice(0,middle);
-    const right=arr.slice(middle);
-    return merge(mergeSort(left), mergeSort(right));
+    const middle=Math.floor(arr.length/2);//find middle of arr
+    const left=arr.slice(0,middle);//split arr into smaller arr, left side
+    const right=arr.slice(middle);//split arr into smaller arr, right side
+    return merge(mergeSort(left), mergeSort(right));//call merge, responsible for merging and sorting smaller arrs into bigger
 }
 
 function merge(left, right){
     let arr=[];
-    while(left.length && right.length){
-        if(left[0]<right[0]){
+    while(left.length && right.length){//iterate as long as we receive left and right parameters
+        if(left[0]<right[0]){//If positive, we will add the value from the left array to the merged 
+            //result array and also increment the variable that is used to iterate the array; 
+            //otherwise, we will add the value from the right array and increment the variable that is used to iterate the array.
             arr.push(left.shift());
         }else{
             arr.push(right.shift());
         }
     }
-    return arr.concat(left.slice()).concat(right.slice());
+    return arr.concat(left.slice()).concat(right.slice());//add every remaining value from left arr to merge to result array and do same with right
 }
-arr=[4,5,8,12,15,75,34,69];
-mergeSort(arr);
+arr=[4,76,45,23,12,15,11,99,85];
+mergeSort(arr);//[4, 11, 12, 15, 23,45, 76, 85, 99]
 
 //quick sort
 //It picks an element as pivot and partitions the given array around the picked pivot.
@@ -102,16 +119,17 @@ function arrayPartition(arr, startIdx=0, endIdx=arr.length-1){
 }
 
 function quickSort(arr, startIdx=0, endIdx=arr.length-1){
-    if(startIdx<endIdx){
+    if(startIdx<endIdx){//if endIdx is bigger than startIdx
         let pivot=arrayPartition(arr, startIdx, endIdx);
-        quickSort(arr, startIdx, pivot-1);
-        quickSort(arr, pivot+1, endIdx);
+        quickSort(arr, startIdx, pivot-1);//function call on first half of array
+        quickSort(arr, pivot+1, endIdx);//function call on second half of array
     }
     return arr;
 }
 arr=[1,4,2,6,5,9,8];
 quickSort(arr);
 //console.log("Pivot value "+arrayPartition(arr));
+
 
 //have an object, Person, with name and age, and we want to sort the array based on the age of the person
 const friends = [
