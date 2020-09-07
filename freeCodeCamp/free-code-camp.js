@@ -31,7 +31,6 @@ function diffArray(arr1,arr2){
             union.push(arr2[i]);
         }
     }
-
     const symmDiff=[];
     for(let i=0;i<union.length;i++){
         const currentElement=union[i];
@@ -47,7 +46,7 @@ arr1=[1,2,3,5];
 arr2=[1,2,3,4,5];
 console.log(diffArray(arr1,arr2))//[4]
 
-//using set as sets only save unique values 
+//using set as sets only save unique values for Diff Arrays
 function diffArraySet(arr1, arr2){
     const union= new Set([...arr1, ...arr2])
     console.log(union)
@@ -64,3 +63,20 @@ function diffArraySet(arr1, arr2){
 arr1=[1,2,3,5];
 arr2=[1,2,3,4,5];
 console.log(diffArraySet(arr1,arr2))//[4]
+
+//seek and destroy 
+//given an array, remove all elements from given array that are same value as  arguments
+function destroyer(arr){
+    const argsArr=[...arguments].slice(1);
+    return arr.filter(el=> !argsArr.includes(el));
+
+    // const filteredArr=[];
+    // for(const currentElement of arr){
+    //     if(!argsArr.includes(currentElement)){
+    //         filteredArr.push(currentElement);
+    //     }
+    // }
+    //return filteredArr;
+}
+console.log(destroyer([1,2,3,1,2,3],2,3))//[1,1]
+

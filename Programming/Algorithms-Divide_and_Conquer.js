@@ -1,4 +1,4 @@
-//merge and quick sorts are examples
+//merge and quick sorts, and binary search are examples
 
 //Divide the original problem into smaller subproblems
 //Conquer the smaller subproblems by solving them with recursive algos that return the solution. The 

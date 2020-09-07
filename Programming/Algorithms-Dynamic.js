@@ -1,6 +1,8 @@
 //1 define the subproblems
 //2 implement the recurrence that solves the subproblems
 //3 recognize and solve the base cases 
+//divide and conquer approach breaks the problem into independent subproblems and then 
+//combines the solutions, dynamic programming breaks the problem into dependent subproblems
 
 function minCoinChange(coins,amount){
     const cache=[]; // memorization
