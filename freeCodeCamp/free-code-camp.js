@@ -80,3 +80,26 @@ function destroyer(arr){
 }
 console.log(destroyer([1,2,3,1,2,3],2,3))//[1,1]
 
+//wherefore art thou
+//looks through an array of objects and returns an array of all objects that have matching name and value pairs
+//each pair of source object has to be present in the object from the collection if it to be included in returned array
+function whatIsInName(collection,source){
+    const arr=[];
+    const keys=Object.keys(source);
+    for(const obj of collection){
+        let hasAllKeyValuePairs=true;
+        for(const key of keys){
+            if(obj[key]!==source[key]){
+                hasAllKeyValuePairs=false;
+                break;
+            }
+        }
+        if(hasAllKeyValuePairs){
+            arr.push(obj);
+        }
+    }
+    return arr;
+}
+console.log(whatIsInName([{first:"Romeo", last:"Montague"},{first:"Mercutio", last:null},{first:"Tybalt", last:"Capulet"}]
+,{last:"Capulet"}));//logs [ { first: 'Tybalt', last: 'Capulet' } ]
+
