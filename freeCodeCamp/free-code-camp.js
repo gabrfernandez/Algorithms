@@ -103,3 +103,11 @@ function whatIsInName(collection,source){
 console.log(whatIsInName([{first:"Romeo", last:"Montague"},{first:"Mercutio", last:null},{first:"Tybalt", last:"Capulet"}]
 ,{last:"Capulet"}));//logs [ { first: 'Tybalt', last: 'Capulet' } ]
 
+
+//spinal tap case
+//convert a string to spinal case (all lower case words joined by dahses-)
+function spinalCase(str){
+    return str.toLowerCase().split(/[A-Z_ ]/).join('-');
+}
+console.log(spinalCase("This is Spinal Case"))//logs 'this-is-spinal-case'
+
