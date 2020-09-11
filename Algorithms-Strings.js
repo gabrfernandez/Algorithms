@@ -143,6 +143,21 @@ function rotateString(str,num){
 console.log(rotateString('Boris Godunov', 5));// should log 'dunovBoris Go'
 console.log(rotateString('this', 5)); // should log 'sthi'
 
+//rotate string without using slice
+function rotateStringWithoutSlice(str, num){
+    num=num%str.length;
+    var newstr='';
+    for(var i=str.length-num; i<str.length;i++){
+        newstr=newstr+str[i];
+    }
+    for( var i=0; i<str.length-num;i++){
+        newstr=newstr+str[i]
+    }
+    return newstr;
+}
+console.log(rotateStringWithoutSlice('Boris Godunov',5)); //logs 'dunovBoris Go'
+console.log(rotateStringWithoutSlice('this', 5)); // logs 'sthi'
+
 //takes in two strings, returns a boolean
 //is the second string a rotation of the first? 
 function isRotation(str1, str2){

@@ -86,6 +86,25 @@ function balancePoint(arr){
 console.log(balancePoint([1,2,3,4])); //false
 console.log(balancePoint([3,4,2,5])); //true
 
+//find the index of an array where the sum of integers to the left and right side are equal
+function balanceIndex(arr){
+    for(var i=1;i<arr.length;i++){//iterate through entire array 
+        var leftsum=0;
+        var rightsum=0;
+        for (var j=0;j<=i-1;j++){//iterate for left side
+            leftsum+=arr[j];
+        }
+        for(var k=i+1;k<arr.length;k++){//iterate for right side
+            rightsum+=arr[k];
+        }
+        if (leftsum===rightsum){//if equal
+            return i;
+        }
+    }
+    return -1;
+}
+console.log(balanceIndex([-2,5,7,0,3])); //logs 2
+console.log(balanceIndex([9,9]));// logs -1
 
 //takes in two equal-length arrays, returns an object, with the elements from the first as keys and te elements from the second as values
 function zipArraysIntoMap(arr1, arr2){
