@@ -116,21 +116,28 @@ function zipArraysIntoMap(arr1, arr2){
 }
 console.log(zipArraysIntoMap(['some', 'thing'], ['other', 'stuff']));// should log { some: 'other', thing: 'stuff' }
 
-//takes in an object, returns an object, with keys as values and values as keys
-//to iterate through an object's keys: for(var key in obj)
-//to get the value: obj[key]
-function invertHash(obj){
-    newobj={};
-    for(var key in obj){
-        newobj[obj[key]]=key;
+//given array of numbers, if numbers are consecutive group using dash -
+function bookIndex(arr){
+    var str='';//initialize empty string
+    var first=arr[0];//
+    var last=arr[0];
+    for(var i=0;i<arr.length;i++){//iterate entire array
+        if(arr[i]+1==arr[i+1]){//
+            last=arr[i]+1;
+        }else if (first==last){
+            str+=first+",";
+            first=arr[i+1];
+        }else{
+            str+= first+"-"+last+",";
+            first=arr[i+1];
+        }
     }
-    return newobj;
+    var newstr=str.slice(0,-1);//-1 to remove trailing comma
+    return newstr;
 }
-console.log(invertHash({ someKey: 'someVal' })); // should log { someVal: 'someKey' }
-console.log(invertHash({
-    key1: 'val1',
-    key2: 'val2'
-})); // should log { val1: 'key1', val2: 'key2' }
+console.log(bookIndex([1,2,3,5,6,7,10,11]));
+console.log(bookIndex([5,10,11,12]))
+
 
 //takes in a sorted array and a search value, returns a boolean. 
 function binarySearch(arr, val){
