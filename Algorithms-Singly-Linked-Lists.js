@@ -10,6 +10,16 @@ class SLL {
         this.head = null;
     }
 
+    getLast(){
+        let lastNode=this.head;
+        if(lastNode){
+            while(lastNode.next){
+                lastNode=lastNode.next;
+            }
+        }
+        return lastNode;
+    }
+
     reverse() {
         var prev = null;
         var current = this.head;
