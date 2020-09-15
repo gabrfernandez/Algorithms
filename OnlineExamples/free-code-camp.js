@@ -111,3 +111,44 @@ function spinalCase(str){
 }
 console.log(spinalCase("This is Spinal Case"))//logs 'this-is-spinal-case'
 
+//pig latin 
+//takes in first consonant of word,. moves it to the end of word and suffices "ay"
+//if word begins vowel, add "way", if not add "ay". all lowercase
+function pigLatin(str){
+    const vowels=['a','e','i','o','u'];
+
+    const firstChar=str[0];
+    if (vowels.includes(firstChar)){//checking if first letter is a vowel
+        return str+ 'way';
+    }
+
+    let hasNoVowels=true;
+    for(const char of str){
+        if(vowels.includes(char)){//checking if vowels are included in string
+            hasNoVowels=false;
+            break;
+        }
+    }
+    if(hasNoVowels){
+        return str+'ay';
+    }
+
+    let consonantCluster='';
+    let firstVowelIndex=0;
+    for(let i=0;i<str.length;i++){//finding first consonant cluster and vowel
+        const c=str[i];
+        if(vowels.includes(c)){
+            firstVowelIndex=i;
+            break;
+        }
+        consonantCluster+=c;
+    }
+    return str.substring(firstVowelIndex)+consonantCluster+'ay';
+
+}
+console.log(pigLatin("california"))//"aliforniacay"
+console.log(pigLatin("algorithm"))//"algorithmway"
+console.log(pigLatin("schwartz"))//"artzschway"
+
+
+
