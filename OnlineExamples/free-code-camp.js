@@ -150,5 +150,10 @@ console.log(pigLatin("california"))//"aliforniacay"
 console.log(pigLatin("algorithm"))//"algorithmway"
 console.log(pigLatin("schwartz"))//"artzschway"
 
-
-
+//search and replace
+//3 agruments: 1 sentence, 2 word you will be replacing, 3 replacement word
+function myReplace(str, before, after){
+    
+}
+console.log(myReplace("Let us go to the store", "store", "mall"));
+console.log(myReplace("He is sleeping on the couch", "sleeping","sitting"))
