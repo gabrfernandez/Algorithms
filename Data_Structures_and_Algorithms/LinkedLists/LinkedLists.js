@@ -13,6 +13,10 @@
 //pro: easy implementation, less memory, faster
 //con: cannot be reverse(traverse from back), 
 
+//linked lists:
+//pros: fast insertion, fast deletion, ordered, flexible size
+//con: slow lookup, more memory
+
 //1->10->99->5->16->88
 // class Node{
 //     constructor(value){
