@@ -168,3 +168,20 @@ BST.insert(15);
 BST.insert(170);
 BST.lookup(6);
 BST.remove(170);
+
+//AVL Tree & Red/Black Tree to balance binary search trees
+
+//Heap is a different type of tree
+//Binary Heaps- lookup O(n), insert & delete O(log N)
+//great at doing comparative operations, priority queues, sorting algos
+//binary heaps take least amount of space bc left to right insertion
+//don't need to balance. preserve order of insertion
+
+//Binary Heaps Pros and Cons
+//Pros: better than O(n), priority, flexible size, fast insert
+//cons:slow lookup
+
+
+//Trie- searching tree. 
+//speed and space
+//Big O(length of word)
