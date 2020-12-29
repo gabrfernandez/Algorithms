@@ -35,28 +35,38 @@ class LinkedList{
         this.length= 1
     }
     append(value){
+        //creating new node
         const newNode={
             value:value,
             next:null
         };
+        //setting tail.next property to point to new node
         this.tail.next=newNode;
+        //setting tail as new node
         this.tail=newNode;
         this.length++;
     }
     prepend(value){
+        //creating new node
         const newNode={
             value:value,
             next:null
         };
+        //setting newNode next property as head
         newNode.next= this.head;
+        //setting head as new node
         this.head=newNode;
         this.length++;
     }
     printList(){
         const array= [];
+        //starting off at the head
         let currentNode= this.head;
+        //while currentNode exist
         while (currentNode != null){
+            //add node to array
             array.push(currentNode.value);
+            //traversing, setting current node to next one
             currentNode=currentNode.next;
         }
         return array;
@@ -70,13 +80,18 @@ class LinkedList{
             this.prepend(value);
             return this.printList();
         }
+        //creating new node
         const newNode={
             value:value,
             next:null
         };
+        //setting leader as node before insertion index position
         const leader = this.traverseToIndex(index-1);
+        //setting holdingPointer as leader.next(node after)
         const holdingPointer = leader.next;
+        //setting leader(node before) next property to point to new node
         leader.next=newNode;
+        //setting new node next property to point to holdingPointer(node after new node)
         newNode.next= holdingPointer;
         this.length++;
         return this.printList()
@@ -92,8 +107,11 @@ class LinkedList{
     }
 
     delete(index){
+        //setting leader as node before
         const leader = this.traverseToIndex(index-1);
+        //setting unwantedNode as node to delete
         const unwantedNode= leader.next;
+        //pointing node before to point to next node, skipping unwantedNode
         leader.next= unwantedNode.next; 
         this.length--;
         return this.printList()
