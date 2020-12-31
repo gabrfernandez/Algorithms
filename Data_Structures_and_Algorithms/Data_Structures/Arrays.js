@@ -96,7 +96,7 @@ newArray.push('d');
 newArray.pop()
 newArray.delete(1)
 
-//reverse a string
+//reverse a string, using an array
 function reverse(str){
     //check input
     if(!str|| str.length<2|| typeof str !== 'string'){
@@ -117,10 +117,10 @@ function reverse2(str){
 }
 reverse2('gabriel');
 
-//reverse function with arrow functions
+//reverse function with arrow functions and built in js functions
 const reverse3=str=>str.split('').reverse().join('')
 
-//reverse a string with decrementing for loop and not using array
+//reverse a string with decrementing for loop and not using array, using new string
 function reverse4(str){
     let newString="";
     for(let i=str.length-1;i>=0;i--){
