@@ -153,11 +153,87 @@ class BinarySearchTree{
             }
         }
     }
+    breadthFirstSearch(){
+        let currentNode=this.root;
+        let list = [];
+        let queue=[];
+        queue.push(currentNode);
+
+        while(queue.length > 0){
+            currentNode = queue.shift();
+            list.push(currentNode.value);
+            if(currentNode.left){
+                queue.push(currentNode.left)
+            }
+            if(currentNode.right){
+                queue.push(currentNode.right);
+            }
+        }
+        return list;
+    }
+    breadthFirstSearchRecursion(queue, list){
+        if(!queue.length){ //base case
+            return list;
+        }
+        let currentNode=queue.shift();
+        list.push(currentNode.value);
+        if(currentNode.left){
+            queue.push(currentNode.left);
+        } 
+        if(currentNode.right){
+            queue.push(currentNode.right);
+        }
+        return this.breadthFirstSearchRecursion(queue,list)
+    }
+    DFSInorder(){
+        return traverseInOrder(this.root, [])
+    }
+    DFSPostorder(){
+        return traversePostOrder(this.root, [])
+    }
+    DFSPreorder(){
+        return traversePreorder(this.root, [])
+    }
+}
+
+function traverseInOrder(node, list){
+    if(node.left){
+        traverseInOrder(node.left, list);
+    }
+    list.push(node.value);//push the left first as to get it in order
+
+    if(node.right){
+        traverseInOrder(node.right, list);
+    }
+    return list;
+}
+function traversePreorder(node, list){
+    list.push(node.value) //push at beginning, push parent first
+    if(node.left){
+        traversePreorder(node.left, list);
+    }
+    if(node.right){
+        traversePreorder(node.right, list);
+    }
+    return list;
+}
+function traversePostOrder(node, list){
+    if(node.left){
+        traversePostOrder(node.left, list);
+    }
+    if(node.right){
+        traversePostOrder(node.right, list);
+    }
+    list.push(node.value);// push at the end, push the children first
+    return list;
 }
 
 //     9
 //  4       20
 //1   6   15   170
+//Inorder-[1,4,6,9,15,20,170]
+//Preorder-[9,4,1,6,20,15,170] useful to recreate a tree
+//Postorder-[1,6,4,15,170,20,9] children come before the parent
 const BST= new BinarySearchTree();
 BST.insert(9);
 BST.insert(4);
@@ -166,9 +242,19 @@ BST.insert(1);
 BST.insert(6);
 BST.insert(15);
 BST.insert(170);
-BST.lookup(6);
-BST.remove(170);
+//BST.lookup(6);
+//BST.remove(170);
+BST.breadthFirstSearch();
+BST.breadthFirstSearchRecursion([BST.root], [])
+BST.DFSInorder();
+BST.DFSPreorder();
 
+function traverse(node) {
+    const tree = { value: node.value };
+    tree.left = node.left === null ? null : traverse(node.left);
+    tree.right = node.right === null ? null : traverse(node.right);
+    return tree;
+}
 //AVL Tree & Red/Black Tree to balance binary search trees
 
 //Heap is a different type of tree
