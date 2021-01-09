@@ -23,8 +23,7 @@
 //         this.value=value;
 //         this.next=null;
 //     }
-// }
-
+//
 class LinkedList{
     constructor(value){
         this.head={
@@ -126,12 +125,17 @@ class LinkedList{
         this.tail=this.head;
         let second= first.next;
         while(second){
+            //assign a temp variable to reference third in line
             const temp = second.next;
+            //change the  arrows/pointers reverse
             second.next=first;
+            //switch the variables
             first=second;
             second=temp;
         }
+        //making the original first element to point to null to be new tail
         this.head.next=null;
+        //first is the last node by now, so it will be head
         this.head= first; 
         return this.printList()
     }

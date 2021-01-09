@@ -179,9 +179,66 @@ function twoSum(arr, target){
 twoSum([1,3,5,7,5], 10)
 
 // maximum subarray-given array, find the contiguous which has the largest sum and return its sum
+function maxSubarray(arr){
+    let currentSum= arr[0];
+    let maxSum=arr[0];
+    for(let i=1; i<arr.length; i++){
+        currentSum= Math.max(arr[i], currentSum + arr[i] )
+        if(currentSum>maxSum){
+            maxSum= currentSum;
+        }
+    }
+    return maxSum;
+}
+maxSubarray([4,5,6,,-44,-1,2,4]) //logs 15
 
-//move zeroes
+//move zeroes-given array, move all 0's to the end of the array
+function moveZero(arr){
+    let anchor = 0;
+    
+    for( let current=0; current<arr.length;current++){
+        if(arr[current] !== 0){
+            let temp=arr[anchor];
+            arr[anchor]=arr[current];
+            arr[current]=temp;
+            anchor++;
+        }
+    }
+    return arr
+}
+moveZero([1,0,3,0,4,0,6])
 
-//contains duplicate 
+//contains duplicate - does the array contain duplicates
+//brute force will be to do a nested for loop. More efficient will be to add a Set
+function anyDuplicates(arr){
+    let mySet=new Set();
 
-//rotate array
+    for(let i=0;i<arr.length;i++){
+        if(!mySet.has(arr[i])){
+            mySet.add(arr[i]);
+        }else{
+            return true;
+        }
+    }
+    return false;
+}
+anyDuplicates([1,2,3,1]) //logs true
+
+//rotate array-given array, rotate the array to right by k steps
+function rotate(arr, k){
+    k=k% arr.length;
+
+    reverse(arr,0, arr.length-1);
+    reverse(arr, 0, k-1);
+    reverse(arr, k, arr.length-1);
+}
+function reverse( arr, start, end){
+    while(start < end){
+        let temp=arr[start];
+        arr[start]=arr[end];
+        arr[end]=temp;
+        start++;
+        end--;
+    }
+}
+rotate([1,2,3,4,5],2)

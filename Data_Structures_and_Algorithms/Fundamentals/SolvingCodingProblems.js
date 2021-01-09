@@ -8,7 +8,7 @@
 //Algorithms: Sorting, Dynamic Programming, BFS + DFS (searching), Recursion
 //Cheat sheet: Readable, Scalable(speed and time complexity)
 
-//Given 2 arrays, create a function that let's a suer know (True/False) whether these two arrays
+//Given 2 arrays, create a function that let's a user know (True/False) whether these two arrays
 //contain any common items
 //example:
 //const array1=['a', 'b', 'c','x']
@@ -92,7 +92,3 @@ function hasPairWithSum(arr, sum){ //O(n^2)
   }
   
   hasPairWithSum2([6,4,3,2,1,7], 9)
-
-
-
-//
