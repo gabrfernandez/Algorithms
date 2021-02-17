@@ -1,4 +1,5 @@
 //given array of two numbers, find the Sum all numbers within that range
+//don't assume first number is lowest in the given array
 function sumAll(arr){
     let min, max;
     if(arr[0]>arr[1]){

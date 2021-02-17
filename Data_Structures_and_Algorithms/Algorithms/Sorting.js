@@ -24,6 +24,7 @@ function bubbleSort(arr){ //O(n^2) nested for loops
             }
         }
     }
+    return arr; 
 }
 bubbleSort([4,6,3,2,5,9,8])
 
