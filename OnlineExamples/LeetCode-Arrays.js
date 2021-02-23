@@ -89,15 +89,18 @@ productExceptSelf([1,2,3,4]) // [24,12,8,6]
 //Maximum subarray
 //Given an integer array nums, find the contiguous subarray (containing at least one number) 
 //which has the largest sum and return its sum.
-function maxSubarray(nums){
-  let solution=nums[0];
-  for(let i =1; i< nums.length; i++){
-    nums[i]=Math.max(nums[i], nums[i]+nums[i-1])
-    solution=Math.max(solution, nums[i])
+function maxSubarray(arr){
+  let currentSum= arr[0];
+  let maxSum=arr[0];
+  for(let i=1; i<arr.length; i++){
+      currentSum= Math.max(arr[i], currentSum + arr[i] )
+      if(currentSum>maxSum){
+          maxSum= currentSum;
+      }
   }
-  return solution;
+  return maxSum;
 }
-maxSubarray([-2,1,-3,4,-1,2,1,-5,4])//6, [4,-1,2,1] has the largest sum = 6.
+maxSubarray([4,5,6,,-44,-1,2,4]) //logs 15
 
 
 //Maximum Product Subarray
