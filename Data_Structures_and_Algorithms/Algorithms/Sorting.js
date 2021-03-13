@@ -175,6 +175,39 @@ function swap(arr, firstIndex, secondIndex){
 }
 quickSort([99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0])
 
+/quick sort
+//It picks an element as pivot and partitions the given array around the picked pivot.
+function arrayPartition(arr, startIdx=0, endIdx=arr.length-1){
+    let pivotIdx=Math.ceil(Math.random()*(endIdx));
+    let pivot=arr[pivotIdx];
+
+    while (startIdx<endIdx){
+        while(arr[startIdx]<pivot){
+            startIdx++
+        }
+        while(arr[endIdx]>pivot){
+            endIdx--;
+        }
+        if(startIdx<endIdx){
+            let temp=arr[startIdx];
+            arr[startIdx]=arr[endIdx];
+            arr[endIdx]=temp;
+        }
+    }
+    return startIdx;
+}
+
+function quickSort(arr, startIdx=0, endIdx=arr.length-1){
+    if(startIdx<endIdx){//if endIdx is bigger than startIdx
+        let pivot=arrayPartition(arr, startIdx, endIdx);
+        quickSort(arr, startIdx, pivot-1);//function call on first half of array
+        quickSort(arr, pivot+1, endIdx);//function call on second half of array
+    }
+    return arr;
+}
+arr=[1,4,2,6,5,9,8];
+quickSort(arr);
+
 //Non-Comparison sorts: counting and radix: only work with numbers in certain range
 //they are able to beat the time complexity of O(n log n)
 
