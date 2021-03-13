@@ -48,6 +48,25 @@ function selectionSort(arr){
 }
 selectionSort([2,5,3,6,8,6,0])
 
+function swapSelectionSort(arr){
+    for(let i=0; i<arr.length-1; i++){//outer loop, iterate the arr and control the passes
+        let min=i // assume current value is minimum
+        for (j=i; j<arr.length; j++){//starting from current i value to end arr
+            if(arr[min]>arr[j]){//comparison of j position is less than current min value
+                min=j;//set new min value
+            }
+        }
+        if (min!==i){//if min value is different than original min value
+            let temp=arr[i];//swap
+            arr[i]=arr[min];
+            arr[min]=temp;
+        }
+    }
+    return arr;
+}
+arr=[1,4,3,5,6,8,9];
+swapSelectionSort(arr);
+
 //Insertion sort-useful for data that is almost sorted or small data 
 // a simple sorting algorithm that builds the final sorted array one item at a time
 function insertionSort(arr){ //O(n^2) on average
@@ -72,11 +91,26 @@ function insertionSort(arr){ //O(n^2) on average
 }
 insertionSort([99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0])
 
+function improvedInsertionSort(arr){
+    for(let i=1; i<arr.length; i++){//iterate arr, start at 1 since 0 will become 1st element in sorted portion
+        let j=i;//j reps index of unsorted portion
+        let insert=arr[i];//insert reps element we are moving into sorted portion
+        while(j>=0 && insert<arr[j-1]){//iterating right to left in sorted portion, previous value in array is bigger than value we comparing
+            arr[j]= arr[j-1];//shift previous value to current position
+            j--;//decrease value of j
+        }
+        arr[j]=insert; // insert the value in correct position 
+    }
+    return arr;
+}
+arr=[5,7,8,9,4,3,15,17,21];
+improvedInsertionSort(arr);
+
 //Merge Sort-O(n log n)- use divide and conquer concept(recursion)
 //It divides the input array into two halves, calls itself for the two halves, 
 //and then merges the two sorted halves.
 function mergeSort(arr){
-    if(arr.length===1){
+    if(arr.length===1){ //base case
         return arr;
     }
     //split arr into right and left
@@ -84,22 +118,23 @@ function mergeSort(arr){
     const left= arr.slice(0,middle);
     const right= arr.slice(middle);
 
-    return merge(mergeSort(left), mergeSort(right));
+    return merge(mergeSort(left), mergeSort(right)); //recursion
 }
 
 function merge(left, right){
     const result=[];
     let leftIndex=0;
     let rightIndex=0;
-    while(leftIndex< left.length && rightIndex<right.length){
-        if(left[leftIndex] < right[rightIndex]){
-            result.push(left[leftIndex]);
-            leftIndex++;
-        }else{
-            result.push(right[rightIndex]);
-            rightIndex++
+    while(leftIndex< left.length && rightIndex<right.length){//checking arrays have items
+        if(left[leftIndex] < right[rightIndex]){//if left array first value is less
+            result.push(left[leftIndex]);//add item to result array
+            leftIndex++;//increment
+        }else{ // if right array first value is less 
+            result.push(right[rightIndex]);//add item to result
+            rightIndex++; //increment 
         }
     }
+    //add every remaining value from left arr to merge to result array and do same with right
     return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
 }
 arr=[4,76,45,23,12,15,11,99,85];

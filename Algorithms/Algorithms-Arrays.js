@@ -77,7 +77,7 @@ function balancePoint(arr){
         for(var j=i+1;j<arr.length;j++){
             secondSum+=arr[j];
         }
-        if(first==secondSum){
+        if(firstSum==secondSum){
             return true;
         }
     }

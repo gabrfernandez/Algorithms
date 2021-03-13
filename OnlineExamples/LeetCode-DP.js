@@ -1,3 +1,12 @@
+// 7 steps to solve DP problems
+// How to recognize a DP problem
+// Identify problem variables
+// Clearly express the recurrence relation
+// Identify the base cases
+// Decide if you want to implement it iteratively or recursively
+// Add memoization
+// Determine time complexity
+
 //70 Climbing Stairs
 //You are climbing a staircase. It takes n steps to reach the top.
 //Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
