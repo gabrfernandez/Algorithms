@@ -51,6 +51,26 @@ function selectionSort(arr){
 arr=[1,4,3,5,6,8,9];
 selectionSort(arr);
 
+let simpleSelectionSort = (arr) => {
+    //Loop till the second last element
+    for(let i = 0; i < arr.length - 1; i++){
+       //Loop after the i till the last element
+       for(let j = i + 1; j < arr.length; j++){
+          //if jth element is less than the ith element then swap
+          //change < to > for sorting in descending order
+          if(arr[j] < arr[i]){
+            let temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+          }
+       }
+    }
+    //return the sorted array
+    return arr;
+ }
+ arr=[1,4,3,5,6,8,9];
+ simpleSelectionSort(arr);
+
 //insertion sort
 //sorting algorithm that builds the final sorted array one item at a time
 function insertionSort(arr){

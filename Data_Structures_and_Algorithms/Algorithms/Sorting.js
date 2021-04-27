@@ -28,19 +28,39 @@ function bubbleSort(arr){ //O(n^2) nested for loops
 }
 bubbleSort([4,6,3,2,5,9,8])
 
+//improved bubble sort
+function improvedBubbleSort(arr){
+    let swapped=false;//optimized if inner loop didn’t cause any swap.
+    for(let i=0;i<arr.length;i++){
+        for(let j=0;j<arr.length-1-i;j++){//avoid unnecessary comparisons by inner loop
+            if(arr[j]>arr[j+1]){
+                let temp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
+                swapped=true;
+            }
+        }
+        if(swapped==false){
+            break;
+        }
+    }
+    return arr;
+}
+improvedBubbleSort([3,5,7,1,8,6,4])
+
 //Selection sort-sorts an array by repeatedly finding the minimum element (considering ascending order) 
 //from unsorted part and putting it at the beginning. The algorithm maintains two subarrays in a given array.
 function selectionSort(arr){
-    for(let i=0; i<arr.length;i++){
+    for(let i=0; i<arr.length-1;i++){
         //set current index as min
         let min=i;
-        let temp=arr[i];
         for(let j=i+1; j< arr.length;j++){
             if(arr[j]<arr[min]){
                 //update min if necessary
                 min=j
             }
         }
+        let temp=arr[i];
         arr[i]=arr[min];
         arr[min]=temp;
     }
@@ -96,8 +116,8 @@ function improvedInsertionSort(arr){
         let j=i;//j reps index of unsorted portion
         let insert=arr[i];//insert reps element we are moving into sorted portion
         while(j>=0 && insert<arr[j-1]){//iterating right to left in sorted portion, previous value in array is bigger than value we comparing
-            arr[j]= arr[j-1];//shift previous value to current position
-            j--;//decrease value of j
+            arr[j]= arr[j-1];//shift previous value to current position, shifting one space to right
+            j--;//decrease value of j, continue to move left in sorted portion
         }
         arr[j]=insert; // insert the value in correct position 
     }
@@ -175,7 +195,7 @@ function swap(arr, firstIndex, secondIndex){
 }
 quickSort([99, 44, 6, 2, 1, 5, 63, 87, 283, 4, 0])
 
-/quick sort
+//quick sort
 //It picks an element as pivot and partitions the given array around the picked pivot.
 function arrayPartition(arr, startIdx=0, endIdx=arr.length-1){
     let pivotIdx=Math.ceil(Math.random()*(endIdx));
