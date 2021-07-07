@@ -249,6 +249,7 @@ BST.breadthFirstSearchRecursion([BST.root], [])
 BST.DFSInorder();
 BST.DFSPreorder();
 
+JSON.stringify(traverse(tree.root))
 function traverse(node) {
     const tree = { value: node.value };
     tree.left = node.left === null ? null : traverse(node.left);
