@@ -28,3 +28,21 @@ console.log(invertHash({
     key1: 'val1',
     key2: 'val2'
 })); // should log { val1: 'key1', val2: 'key2' }
+
+//Value counting using hash table or js object
+const letters=['a', 'b', 'c','d','c','d','e','d'];
+
+const countFreq=(arr)=>{
+  const freqTable={};
+  for(i=0; i<arr.length;i++) {
+    if( !freqTable[arr[i]]){
+      freqTable[arr[i]]=1;
+    }else{
+      freqTable[arr[i]]++
+    }
+  }
+  return freqTable
+}
+
+countFreq(letters) //{ a: 1, b: 1, c: 2, d: 3, e: 1 }
+
