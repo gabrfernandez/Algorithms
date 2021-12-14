@@ -35,6 +35,23 @@ binarySearch([1, 2, 3, 4, 5], 6); // -1
 
 //Sorting 
 //Insertion sort
+const insertionSort=(arr)=>{
+  for(let i=1;i<arr.length;i++){// Iterate from arr[1] to arr[n] over the array. 
+    let key =arr[i]; //selects first unsorted element
+    let j=i-1;
+    //Compare the current element (key) to its predecessor (j).
+    //If the key element is smaller than its predecessor, compare it to the elements before.
+    // Move the greater elements one position up to make space for the swapped element.
+    while(j>=0 && arr[j]>key){ //loop shifts all elemetns to right to create open position
+      arr[j+1]=arr[j];
+      j--;
+    }
+    arr[j+1]=key; //insers the undsorted element to its correct position
+  }
+  return arr;
+}
+
+insertionSort([5,4,3,6,2,7,1]) //[1,2,3,4,5,6,7]
 
 //Heap Sort 
 
