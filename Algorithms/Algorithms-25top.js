@@ -105,6 +105,24 @@ heapsort([6, 3, 4, 1]); // [1, 3, 4, 6]
 
 //Arrays
 //Kadane's 
+//Given an array Arr[] of N integers. Find the contiguous sub-array
+//(containing at least one number) which has the maximum sum and return its sum.
+const maxSubArray=arr=>{
+  let maxCurrent=0;
+  let maxEnd=0;
+  for(let i=0;i<arr.length;i++){
+    maxCurrent=maxCurrent+arr[i];
+    if(maxCurrent<arr[i]){
+      maxCurrent=arr[i]
+    }
+    if (maxEnd<maxCurrent){
+      maxEnd=maxCurrent;
+    }
+  }
+  return maxEnd
+}
+maxSubArray([ -2, -3, 4, -1, -2, 1, 5, -3 ])
+
 
 //Floyd's Cycle Detection 
 
