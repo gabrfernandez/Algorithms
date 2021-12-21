@@ -46,7 +46,7 @@ const insertionSort=(arr)=>{
       arr[j+1]=arr[j];
       j--;
     }
-    arr[j+1]=key; //insers the undsorted element to its correct position
+    arr[j+1]=key; //inserts the unsorted element to its correct position
   }
   return arr;
 }
@@ -54,6 +54,31 @@ const insertionSort=(arr)=>{
 insertionSort([5,4,3,6,2,7,1]) //[1,2,3,4,5,6,7]
 
 //Heap Sort 
+const heapsort = arr => {
+  const a = [...arr]; //clone original array
+  let l = a.length; //use closure to declare l and heapify function
+
+  const heapify = (a, i) => {
+    const left = 2 * i + 1;
+    const right = 2 * i + 2;
+    let max = i;
+    if (left < l && a[left] > a[max]) max = left; //if left child > root
+    if (right < l && a[right] > a[max]) max = right;//if right child> max so far
+    if (max !== i) { // if max is not root
+      [a[max], a[i]] = [a[i], a[max]];
+      heapify(a, max); //recursively heapify the affect sub-tree
+    }
+  };
+
+  for (let i = Math.floor(l / 2); i >= 0; i -= 1) heapify(a, i);//build max heap from array
+  for (i = a.length - 1; i > 0; i--) { //narrow down the considered range, using heapify and 
+    [a[0], a[i]] = [a[i], a[0]]; //swapping values as necessary in order to sort the cloned array.
+    l--;
+    heapify(a, 0);
+  }
+  return a;
+};
+heapsort([6, 3, 4, 1]); // [1, 3, 4, 6]
 
 //Selection Sort
 
@@ -85,7 +110,7 @@ insertionSort([5,4,3,6,2,7,1]) //[1,2,3,4,5,6,7]
 
 //KMP
 
-//Quick Sort
+//Quick Select
 
 //Boyer-More Majority Vote 
 
