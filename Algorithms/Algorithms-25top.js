@@ -122,18 +122,53 @@ const maxSubArray=arr=>{
   return maxEnd
 }
 maxSubArray([ -2, -3, 4, -1, -2, 1, 5, -3 ])
-
-
 //Floyd's Cycle Detection 
 
 //KMP
+//Given a text txt[0..n-1] and a pattern pat[0..m-1], write a function search
+//(char pat[], char txt[]) that prints all occurrences of pat[] in txt[]. 
+//You may assume that n > m.
 
 //Quick Select
 
 //Boyer-More Majority Vote 
+function findMajority(nums){
+    var count = 0, candidate = -1;
+    // Finding majority candidate
+    for (var index = 0; index < nums.length; index++) {
+      if (count == 0) {
+        candidate = nums[index];
+        count = 1;
+      }
+      else {
+        if (nums[index] == candidate)
+          count++;
+        else
+          count--;
+      }
+    }
+    // Checking if majority candidate occurs more than
+    // n/2 times
+    for (var index = 0; index < nums.length; index++) {
+      if (nums[index] == candidate)
+        count++;
+    }
+    if (count > (nums.length / 2))
+      return candidate;
+    return -1;
+ 
+    // The last for loop and the if statement step can
+    // be skip if a majority element is confirmed to
+    // be present in an array just return candidate
+    // in that case
+}
+var arr = [ 1, 1, 1, 1, 2, 3, 4 ];
+findMajority(arr)
+ 
 
 //Basics
 //Huffman Coding Compression
+
 
 //Euclid's 
 
