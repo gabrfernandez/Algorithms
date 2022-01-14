@@ -1,0 +1,112 @@
+//check if two strings ar anagrams
+const anagram=(str1, str2)=>{
+    if (str1.length !== str2.length){ //checking length are equal
+        return false;
+    }
+
+    let freq1={}; //initialize hash tables
+    let freq2={};
+
+    for(let char of str1){//looping str1 and adding to hash table
+        if (char in freq1){
+            freq1[char] +=1;
+        }else{
+            freq1[char]=1;
+        }
+    }
+    for (let char in str2){//looping str2 and adding to hash table
+        if(char in freq2){
+            freq2[char]+=1;
+        }else{
+            freq2[char]=1;
+        }
+    }
+
+    for(let key in freq1){ //check if freq1 and freq2 have the same values
+        if(!freq1[key] || freq1[key] != freq2[key]){
+            return false;
+        }
+    }
+    return true;
+}
+anagram('gabe', 'bage') // big o time=o(n), space=o(n)
+
+const anagram2=(str1, str2)=>{//two anagrams have same lexicographically sorted string
+    if (str1.length !== str2.length) return false;
+    if(str1.split('').sort().join('') ==str2.split('').sort().join('')){
+      return true;
+    }else{
+      return false;
+    }
+}
+anagram2('gabe', 'ebga') // T(n)=o(nlogn), s(n)=o(n)
+
+//First and last position
+//given sorted array of integers and target integer, find the index of first and last
+//position of target in arr. If target cannot be found return false
+ const firstAndLast=(arr, target)=>{//linear search
+     for (let i=0; i<arr.length;i++){
+         if(arr[i]==target){
+             let start=i;
+             while(i+1< arr.length && arr[i+1]==target){
+                 i++
+             }
+             return [start, i];
+         }
+     }
+     return false;
+ }
+
+ firstAndLast([1,2,3,4,4,4,4,5], 4)// T(n)=o(n) S(n)=o(1)
+
+ const binarySearchStartIndex=(arr,target)=>{
+     if(arr[0] == target){ // early exit
+         return 0;
+     }
+
+     let left=0;
+     let right =arr.length-1;
+
+     while(left<=right){//finds start index
+         let mid=Math.floor((left+right)/2);
+         if(arr[mid]==target && arr[mid-1]<target){
+             return mid;
+         }else if(arr[mid]<target){
+             left=mid+1;
+         }else{
+             right=mid-1;
+         }
+     }
+     return -1;
+ }
+
+ const binarySearchEndIndex=(arr, target)=>{
+     if(arr[-1] ==target){//early exit
+         return arr.length-1;
+     }
+     let left=0;
+     let right=arr.length-1;
+
+     while(left<=right){
+        let mid=Math.floor((left+right)/2);
+         if(arr[mid]==target && arr[mid+1]>target){
+             return mid;
+         }else if(arr[mid]>target){
+             right =mid-1;
+         }else{
+             left=mid+1;
+         }
+     }
+     return -1;
+ }
+
+ const binarySearchFirstLast=(arr,target)=>{
+     if (arr.length==0 || arr[0]>target || arr[-1]<target){
+         return false;
+     }else{
+         let start=binarySearchStartIndex(arr,target);
+         let end=binarySearchEndIndex(arr,target);
+         return [start, end];
+     }
+ }
+ binarySearchFirstLast([1,2,3,4,4,4,4,5],4)// T(n)=o(logn), S(n)=1;
