@@ -110,3 +110,25 @@ anagram2('gabe', 'ebga') // T(n)=o(nlogn), s(n)=o(n)
      }
  }
  binarySearchFirstLast([1,2,3,4,4,4,4,5],4)// T(n)=o(logn), S(n)=1;
+
+ //Kth largest element
+ //given arr and value k, find the kth largest element
+const kthLargest=(arr, k)=>{
+    for (i=0; i<k-1;i++){ //remove the max every iteration
+        let index=arr.indexOf(Math.max(arr))
+        arr.splice(index,1)
+    }
+    return Math.max(...arr);//return max after remove k-1 maximums before
+}
+kthLargest([2,3,4,5,7],2) //output:5 T(n)=o(kn) S(n)=o(1)
+
+//sort the arr then return last-k position
+const kthLargestSorted=(arr, k)=>{
+    return arr.sort((a, b) => (b - a))[k - 1]
+}
+kthLargestSorted([5,4,6,7,8],3) //output:6 T(n)=o(n logn) S()=depends on sporting func
+
+//best solution to use max heap. Other languages have built-in ds
+
+//symmetric tree
+//given binary tree, check if it's symmetric
