@@ -131,4 +131,23 @@ kthLargestSorted([5,4,6,7,8],3) //output:6 T(n)=o(n logn) S()=depends on sportin
 //best solution to use max heap. Other languages have built-in ds
 
 //symmetric tree
+//dfs problem
 //given binary tree, check if it's symmetric
+const isSymmetric = (root)=> {
+    if (root == null) return true;
+    return areSymmetric(root.left, root.right);
+};
+
+const areSymmetric=(left, right)=> {
+    if (left == null && right == null) return true; // If both sub trees are empty
+    if (left == null || right == null) return false; // If only one of the sub trees are empty
+    if (left.val !== right.val) return false; // If the values dont match up
+    
+	// Check both subtrees but travelled in a mirrored/symmetric fashion
+	// (one goes left, other goes right)  and make sure they're both symmetric
+    return areSymmetric(left.left, right.right) &&
+    areSymmetric(left.right, right.left);
+}
+isSymmetric([1,2,2,3,4,4,3]) //output:true
+//T(n)=O(n) S(n)=O(logn)
+
