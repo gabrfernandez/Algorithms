@@ -187,3 +187,59 @@ const buildCombinationFrom=(string, openUsed, closeUsed, n, combinations)=> {
 generateParenthesis(3) // output: ["((()))","(()())","(())()","()(())","()()()"]
 //Time = O(4^n/(sqrt(n))) Space = O(4^n/(sqrt(n)))
 
+//gas station
+//Given two integer arrays gas and cost, return the starting gas station's index 
+//if you can travel around the circuit once in the clockwise direction, otherwise return -1.
+
+//brute force 
+//for each station i:
+//  start traversing from there 
+//  if the car goes back to i
+//      i is hte correct solution, return it 
+const canTraverse=(gas, cost, start)=>{
+    let gasLength=gas.length;
+    let remaining=0;
+    let i=start;
+    let started=false;
+    while (i !== start || !started){
+        started=true;
+        remaining += gas[i]-cost[i];
+        if (remaining<0){
+            return false;
+        }else{
+            i=(i+1)%gasLength;
+        }
+    }
+    return true;
+}
+
+const gasStation=(gas,cost)=>{
+    for(let i=0; i<gas.length;i++){
+        if(canTraverse(gas, cost, i)){
+            return i;
+        }
+    }
+    return -1;
+}
+gasStation([1,5,3,3,5,3,1,3,4,5],[5,2,2,8,2,4,2,5,1,2])//8
+//T(n)=O(n^2) S(n)=O(1)
+
+const gasStationRefactor=(gas, cost)=>{
+    let remaining=0;
+    let candidate=0;
+    let prevCandidate=0;
+    for(let i=0; i<gas.length;i++){
+        remaining+=gas[i]-cost[i];
+        if(remaining<0){
+            candidate=i+1;
+            prevCandidate+= remaining;
+            remaining=0;
+        }
+    }
+    if ((candidate==gas.length) || remaining+prevCandidate<0){
+        return -1
+    }else{
+        return candidate;
+    }
+}
+//T(n)=o(n) S(n)=O(1)
