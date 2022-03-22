@@ -81,6 +81,25 @@ const heapsort = arr => {
 heapsort([6, 3, 4, 1]); // [1, 3, 4, 6]
 
 //Selection Sort
+const swap=(arr, x, y)=>{
+  let temp=arr[x];
+  arr[x]=arr[y];
+  arr[y]=temp;
+}
+
+const selectionSort=(arr)=>{
+  for(let i=0; i<arr.length; i++){
+    let minIndex=i;//find min element in unsorted array
+    for(let j=i+1; j<arr.length;j++){
+      if(arr[j]<arr[minIndex]){
+        minIndex=j;
+        swap(arr, minIndex,i) // swap found min element
+      }
+    }
+  }
+  return arr;
+}
+selectionSort([2,5,3,6,8,6,0])
 
 //Merge Sort
 
