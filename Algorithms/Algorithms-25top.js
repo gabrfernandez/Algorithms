@@ -190,6 +190,15 @@ findMajority(arr)
 
 
 //Euclid's 
+//Find greatest common denominator 
+const GCD=(a,b)=>{
+  if (a==0){
+    return b;
+  }
+  return GCD(b % a, a)
+}
+// time o(log max(a,b))
+GCD(10, 15) //5
 
 //Union Find
 
